@@ -1,16 +1,21 @@
 <template>
   <div id="app">
-   <Toast></Toast>
+    <!-- <Toast></Toast> -->
+    <input type="button" value="显示弹窗" @click="showToast">
   </div>
 </template>
 
 <script>
 
-import Toast from './toast/index.vue'
+// import Toast from './toast/index.vue'
 export default {
   name: 'App',
   components: {
-    Toast
+  },
+  methods: {
+    showToast() {
+      this.$toast('我是弹窗消息')
+    }
   }
 }
 </script>

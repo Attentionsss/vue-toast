@@ -3,20 +3,25 @@ import vue from 'vue'
 import Toast from './index.vue'
 const ToastConstructor = vue.extend(Toast)
 
-function showToast(text, duration = 200) {
+function showToast(text, duration = 2000) {
 
   const toastDom = new ToastConstructor({
     el: document.createElement('div'),
     data() {
       return {
         text,
-        show: true
+        showWrap: true,
+        showContent: true//在隐藏组件时，显示隐藏动画
       }
     }
   })
-  document.body.appendChild(toastDom)
+  console.log(toastDom);
+  document.body.appendChild(toastDom.$el)
   setTimeout(() => {
-    toastDom.show = true
+    toastDom.showContent = false
+  }, duration - 1750)
+  setTimeout(() => {
+    toastDom.showWrap = false
   }, duration)
 }
 
